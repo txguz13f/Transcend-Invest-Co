@@ -76,12 +76,14 @@
       align-items:center;
       justify-content:center;
       flex-shrink:0;
+      margin-bottom:20px;
     }
 
     .logo-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
+      width:180px;
+      height:auto;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 25px rgba(0,0,0,.6));
     }
 
     .brand-name{
@@ -353,7 +355,9 @@
 
   <header class="hero" id="home">
     <div class="wrap hero-grid">
-      <div>
+      <div> class="hero-logo">
+        <img src="logo.png" alt="Transcend Invest Co Logo">
+      </div>
         <div class="eyebrow">Building Wealth. Creating Freedom.</div>
         <h1>Smart real estate strategies for long-term financial growth.</h1>
         <p>

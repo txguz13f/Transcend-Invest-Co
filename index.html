@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transcend Invest Co</title>
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --panel:#121317;
+      --panel-2:#1a1c22;
+      --text:#f5f5f7;
+      --muted:#c7c9d1;
+      --line:#2e313b;
+      --accent:#c8ccd4;
+      --accent-2:#8e95a3;
+      --accent-3:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,.28);
+      --radius:18px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%, #11141b 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .wrap{
+      width:min(100% - 32px, var(--max));
+      margin:auto;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(8px);
+      background:rgba(11,11,13,.84);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-inner{
+      width:min(100% - 32px, var(--max));
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:.4px;
+    }
+
+    .logo-wrap{
+      width:54px;
+      height:54px;
+      border-radius:14px;
+      overflow:hidden;
+      background:linear-gradient(135deg,var(--accent-3) 0%, var(--accent) 45%, var(--accent-2) 100%);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    .logo-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .brand-name{
+      font-size:1rem;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .nav-links a:hover{color:var(--accent-3)}
+
+    .hero{
+      padding:72px 0 40px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:7px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--accent);
+      font-size:.85rem;
+      margin-bottom:16px;
+      background:rgba(255,255,255,.03);
+    }
+
+    h1{
+      font-size:clamp(2.1rem, 4vw, 4rem);
+      line-height:1.08;
+      margin:0 0 16px;
+      letter-spacing:-1px;
+    }
+
+    .hero p{
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:64ch;
+      margin:0 0 24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:20px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:13px 18px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg,var(--accent-3) 0%, var(--accent) 45%, var(--accent-2) 100%);
+      color:#111;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      opacity:.96;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+
+    .mock-building{
+      min-height:340px;
+      border-radius:18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.02)),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .stat-strip{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .stat{
+      background:rgba(0,0,0,.34);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.15rem;
+      margin-bottom:4px;
+      color:var(--accent-3);
+    }
+
+    section{
+      padding:28px 0;
+    }
+
+    .section-title{
+      font-size:1.7rem;
+      margin:0 0 12px;
+      letter-spacing:-.4px;
+    }
+
+    .section-sub{
+      color:var(--muted);
+      max-width:70ch;
+      margin:0 0 22px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.15rem;
+      color:var(--accent-3);
+    }
+
+    .card p, .card li{
+      color:var(--muted);
+    }
+
+    .services .card{
+      min-height:220px;
+    }
+
+    ul.clean{
+      margin:12px 0 0 18px;
+      padding:0;
+    }
+
+    .impact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .quote{
+      font-style:italic;
+      color:var(--text);
+    }
+
+    .quote small{
+      display:block;
+      margin-top:10px;
+      color:var(--muted);
+      font-style:normal;
+    }
+
+    .contact-box{
+      text-align:center;
+      padding:34px 22px;
+    }
+
+    .contact-box p{
+      color:var(--muted);
+      margin:10px auto 20px;
+      max-width:60ch;
+    }
+
+    .footer{
+      padding:28px 0 48px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .refs{
+      font-size:.96rem;
+      color:var(--muted);
+    }
+
+    .refs p{
+      margin:0 0 12px;
+    }
+
+    .kicker{
+      color:var(--accent);
+      font-weight:700;
+      font-size:.88rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:8px;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .impact{
+        grid-template-columns:1fr;
+      }
+
+      .stat-strip{
+        grid-template-columns:1fr;
+      }
+
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo-wrap">
+          <img src="logo.png" alt="Transcend Invest Co logo">
+        </div>
+        <div class="brand-name">Transcend Invest Co</div>
+      </div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#impact">Why It Matters</a>
+        <a href="#contact">Contact</a>
+        <a href="#references">References</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Building Wealth. Creating Freedom.</div>
+        <h1>Smart real estate strategies for long-term financial growth.</h1>
+        <p>
+          Transcend Invest Co helps individuals and families build wealth through real estate
+          investment education, strategy, and practical guidance. We simplify the path to
+          passive income and long-term financial confidence.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Start Your Journey</a>
+          <a class="btn secondary" href="#services">Explore Services</a>
+        </div>
+        <div class="card">
+          <div class="kicker">Mission Statement</div>
+          <p>
+            At Transcend Invest Co, our mission is to help individuals and families build
+            long-term wealth through strategic real estate investing and financial education.
+            We are committed to providing clear guidance, accessible opportunities, and proven
+            strategies that empower our clients to pursue financial independence.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="mock-building" aria-label="Commercial real estate visual"></div>
+        <div class="stat-strip">
+          <div class="stat">
+            <strong>Wealth Building</strong>
+            <span>Focused on long-term appreciation and cash flow.</span>
+          </div>
+          <div class="stat">
+            <strong>Clear Strategy</strong>
+            <span>Simple, practical steps for confident investing.</span>
+          </div>
+          <div class="stat">
+            <strong>Real Impact</strong>
+            <span>Helping clients create stronger financial futures.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-sub">
+        Transcend Invest Co was built on the idea that financial freedom should be more
+        accessible. Many people want to invest, but they do not know where to start or how to
+        evaluate opportunities with confidence.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Who We Are</h3>
+          <p>
+            We focus on simplifying real estate investing through education, planning, and
+            practical strategy. Our goal is to make investing feel understandable, realistic,
+            and achievable for people who want to build a stronger future.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Core Values</h3>
+          <ul class="clean">
+            <li>Integrity</li>
+            <li>Financial empowerment</li>
+            <li>Long-term growth</li>
+            <li>Education first</li>
+            <li>Client success</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">
+        We provide practical support for people who want to understand investing,
+        create passive income, and make smarter real estate decisions.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Real Estate Investment Guidance</h3>
+          <p>
+            Learn how to identify opportunities, evaluate properties, and think like a
+            long-term investor instead of guessing your way through the process.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Passive Income Strategies</h3>
+          <p>
+            Explore ways to generate recurring income through well-planned real estate
+            investments and disciplined financial strategy.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Financial Education</h3>
+          <p>
+            Build confidence with easy-to-understand guidance on wealth creation,
+            risk awareness, and sustainable investing habits.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="wrap">
+      <h2 class="section-title">Why It Matters</h2>
+      <p class="section-sub">
+        The problem is not just lack of opportunity. It is lack of clarity. Many people
+        want to invest, but complexity and uncertainty keep them from taking the first step.
+      </p>
+
+      <div class="impact">
+        <div class="card">
+          <h3>The Problem</h3>
+          <p>
+            Many individuals rely on a single income source and never receive enough
+            practical education about building long-term wealth. That makes it harder to
+            pursue financial independence or create additional streams of income.
+          </p>
+          <p>
+            Real estate investing has long been associated with wealth building, especially
+            when investors understand income properties, management, financing, and market
+            strategy (Rosen, 2017; Grabel, 2011).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>The Impact</h3>
+          <p>
+            Transcend Invest Co aims to help clients make informed decisions, reduce fear,
+            and act with purpose. When people have better access to investing knowledge,
+            families can build stronger financial foundations and communities can benefit
+            from greater long-term stability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Client Perspective</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="quote">
+            “Transcend Invest Co helped me understand investing in a way that finally made sense.”
+            <small>— Carlos M.</small>
+          </div>
+        </div>
+        <div class="card">
+          <div class="quote">
+            “The strategies I learned gave me a clearer path toward passive income and long-term goals.”
+            <small>— Jasmine R.</small>
+          </div>
+        </div>
+        <div class="card">
+          <div class="quote">
+            “Professional, straightforward, and focused on real results instead of hype.”
+            <small>— David L.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="card contact-box">
+        <h2 class="section-title">Contact Us</h2>
+        <p>
+          Ready to learn more about real estate investing and financial growth?
+          Reach out to start building a smarter strategy.
+        </p>
+        <p>
+          <strong>Email:</strong> info@transcendinvestco.com<br>
+          <strong>Phone:</strong> (210) 555-7890<br>
+          <strong>Location:</strong> San Antonio, Texas
+        </p>
+        <a class="btn primary" href="mailto:info@transcendinvestco.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="references">
+    <div class="wrap">
+      <h2 class="section-title">References</h2>
+      <div class="card refs">
+        <p>
+          Rosen, K. D. (2017). <em>Investing in income properties: The big six formula for achieving wealth in real estate</em>. John Wiley &amp; Sons.
+        </p>
+        <p>
+          Grabel, G. (2011). <em>Wealth opportunities in commercial real estate: Management, financing, and marketing of investment properties</em>. John Wiley &amp; Sons, Incorporated.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      © 2026 Transcend Invest Co. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        const id = link.getAttribute('href');
+        if (!id.startsWith('#')) return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
